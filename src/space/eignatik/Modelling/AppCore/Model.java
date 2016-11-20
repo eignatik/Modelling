@@ -7,8 +7,8 @@ public class Model {
     private static final int X = 5;
 
     private int iterations = 1000;
-    private double step = 0.1;
-    private int printStep = 1;
+    private double step;
+    private int printStep;
 
     private int a = 3, b1 = 1, b2 = 2, k = 4;
 
@@ -21,7 +21,7 @@ public class Model {
     /**
      * show calculated results
      */
-    public void showResults() {
+    void showResults() {
         for (int time=0; time < iterations; time++){
             calculate();
             results.put("" + time, y);
@@ -54,19 +54,19 @@ public class Model {
 
     }
 
-    public Map<String, Double> getResults(){
+    Map<String, Double> getResults(){
         return results;
     }
 
-    public void setIterations(int iterations){
+    void setIterations(int iterations){
         this.iterations = iterations;
     }
 
-    public void setStep(double step) {
+    void setStep(double step) {
         this.step = step;
     }
 
-    public void setPrintStep(int printStep) {
+    void setPrintStep(int printStep) {
         this.printStep = printStep;
     }
 }
