@@ -1,5 +1,7 @@
 package space.eignatik.Modelling.AppCore;
 
+import java.util.List;
+
 public class ModelAPI {
 
     public void checkRandom(double dy, int size) {
@@ -17,5 +19,18 @@ public class ModelAPI {
         model.setPrintStep(printStep);
         model.setStep(step);
         model.showResults();
+    }
+
+    public void calculateOptimization() {
+        Optimization optimization = new Optimization();
+        optimization.calculate();
+        printList(optimization.getVisitedPoints());
+
+    }
+
+    private void printList(List<Point> list) {
+        for(Point point : list) {
+            System.out.println(point);
+        }
     }
 }
