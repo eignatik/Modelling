@@ -24,6 +24,13 @@ public class CustomRandom {
         fillValues();
     }
 
+    public double[] addNoise(double[] source) {
+        for (int i=0; i<values.length; i++) {
+            source[i] += values[i];
+        }
+        return source;
+    }
+
     private void fillValues() {
         for(int i = 0; i < values.length; i++) {
             values[i] = getValueByMullerMethod() * dy;

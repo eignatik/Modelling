@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 //        modelAPI.checkRandom(0.2, 10000);
 //        modelAPI.getRandomValues(0.2);
-//        modelAPI.operateWithModel(20, 0.25);
+//        modelAPI.operateWithModel(2, 0.25);
         modelAPI.calculateOptimization();
     }
 }

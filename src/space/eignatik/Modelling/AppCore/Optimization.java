@@ -8,11 +8,16 @@ import static java.lang.Math.pow;
 public class Optimization {
     private double a = 4;
     private double b = 1;
-    private double step = 0.1;
-    private double x1 = 2;
-    private double x2 = 2;
+    private double step = 0.05;
+    private double x1 = 0;
+    private double x2 = 0;
     private double result;
     private List<Point> visitedPoints;
+    private double[] yTh = new Model().getArrayY();
+
+    private static CustomRandom random02 = new CustomRandom(0.2, 30);
+    private static CustomRandom random01 = new CustomRandom(0.1, 30);
+    private static CustomRandom random005 = new CustomRandom(0.05, 30);
 
     void calculate() {
         visitedPoints = new ArrayList<>();
@@ -63,8 +68,16 @@ public class Optimization {
     }
 
     private double getFunctionResultInPoints(double x1, double x2){
-        return Math.pow((x1/a), 2) + Math.pow((x2/b), 2);
+//        return Math.pow((x1/a), 2) + Math.pow((x2/b), 2);
 //        return 100 * pow((pow(x1, 2) - x2), 2) + pow((1-x1), 2);
+        double result = 0.0;
+        double[] expY = new Model(x1, x2).getArrayY();
+        // TODO make this for every noise
+        expY = random005.addNoise(expY);
+        for (int i=0; i<expY.length; i++) {
+            result += Math.abs(expY[i] - yTh[i]);
+        }
+        return result;
     }
 
     List<Point> getVisitedPoints() {
