@@ -3,10 +3,6 @@ package space.eignatik.Modelling.AppCore;
 import java.util.List;
 
 public class ModelAPI {
-    private static CustomRandom random02 = new CustomRandom(0.2, 30);
-    private static CustomRandom random01 = new CustomRandom(0.1, 30);
-    private static CustomRandom random005 = new CustomRandom(0.05, 30);
-
     public void checkRandom(double dy, int size) {
         CustomRandom customRandom = new CustomRandom(dy, size);
         customRandom.checkRandom();
@@ -36,8 +32,11 @@ public class ModelAPI {
     }
 
     private void printList(List<Point> list) {
+        int i = 0;
         for(Point point : list) {
-            System.out.println(point);
+            if (i++ % 6 == 0) {
+                System.out.println(point);
+            }
         }
     }
 }

@@ -67,6 +67,14 @@ public class Model {
         return yArray;
     }
 
+    public double getMaxY() {
+        double max = 0.0;
+        for (int i=0; i<yArray.length; i++) {
+            max = yArray[i] >= max? yArray[i]:max;
+        }
+        return max;
+    }
+
     void setIterations(int iterations){
         this.iterations = iterations;
     }

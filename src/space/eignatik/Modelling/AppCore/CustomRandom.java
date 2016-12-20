@@ -8,17 +8,29 @@ public class CustomRandom {
     private double[] values;
     private Random random;
     private double dy = 0.2; //can be 0.1 or 0.2
+    private double maxY;
 
-    CustomRandom(double dy) {
+    public CustomRandom(double dy) {
         this.dy = dy;
+        this.maxY = 1;
         random = new Random();
         values = new double[30];
         fillValues();
         printValues();
     }
 
-    CustomRandom(double dy, int arraySize) {
+    public CustomRandom(double dy, int arraySize) {
         this.dy = dy;
+        this.maxY = 1;
+        random = new Random();
+        values = new double[arraySize];
+        fillValues();
+        printValues();
+    }
+
+    public CustomRandom(double dy, int arraySize, double maxY) {
+        this.dy = dy;
+        this.maxY = maxY;
         random = new Random();
         values = new double[arraySize];
         fillValues();
@@ -33,7 +45,7 @@ public class CustomRandom {
 
     private void fillValues() {
         for(int i = 0; i < values.length; i++) {
-            values[i] = getValueByMullerMethod() * dy;
+            values[i] = getValueByMullerMethod() * dy * maxY;
         }
     }
 
@@ -91,5 +103,9 @@ public class CustomRandom {
 
     public double[] getValues() {
         return values;
+    }
+
+    public void setMaxY(double maxY) {
+        this.maxY = maxY;
     }
 }
